@@ -13,7 +13,7 @@ export function findCoursesForEnrolledUser(userId) {
 }
 
 export function createCourse(course) {
-    const newCourse = { ...course, _id: Date.now().toString() };
+    const newCourse = { ...course };
 
     Database.courses = [...Database.courses, newCourse];
 
