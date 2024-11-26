@@ -2,6 +2,7 @@ import "dotenv/config";
 import cors from "cors";
 import dotenv from 'dotenv';
 import express from 'express';
+import mongoose from "mongoose";
 import session from "express-session";
 
 import AssignmentRoutes from "./Kanbas/Assignments/routes.js";
@@ -12,9 +13,12 @@ import Lab5 from "./Lab5/index.js";
 import ModuleRoutes from "./Kanbas/Modules/routes.js";
 import UserRoutes from "./Kanbas/Users/routes.js";
 
+const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kanbas"
+const app = express();
+
 dotenv.config();
 
-const app = express();
+mongoose.connect(CONNECTION_STRING);
 app.use(express.json());
 
 app.use(
