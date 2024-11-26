@@ -21,12 +21,7 @@ dotenv.config();
 mongoose.connect(CONNECTION_STRING);
 app.use(express.json());
 
-app.use(
-    cors({
-        credentials: true,
-        origin: process.env.NETLIFY_URL || "http://localhost:3000"
-    })
-);
+app.use(cors());
 
 const sessionOptions = {
     secret: process.env.SESSION_SECRET || "xr7kHlX6IX6HQHI",
